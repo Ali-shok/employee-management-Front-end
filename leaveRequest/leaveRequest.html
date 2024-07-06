@@ -1,0 +1,181 @@
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Page title -->
+    <title>Leave Request</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    />
+    <!-- DataTables Bootstrap 5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css"
+    />
+    <!-- Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="leaveRequest.css" />
+  </head>
+  <body>
+    <!--NavBar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand brand-color">HR System</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <!-- Align to the right -->
+            <li class="nav-item" id="nav-salaries">
+              <a class="nav-link" href="../salary/salary.html">Salaries</a>
+            </li>
+            <li class="nav-item" id="nav-employees">
+              <a class="nav-link" href="../employee/employee.html">Employees</a>
+            </li>
+            <li class="nav-item" id="nav-performance">
+              <a class="nav-link" href="../performance/performanc.html"
+                >Performance</a
+              >
+            </li>
+
+            <li class="nav-item" id="nav-your-salary">
+              <a class="nav-link" href="../mySalary/mySalary.html">Salary</a>
+            </li>
+
+            <li class="nav-item" id="nav-your-performance">
+              <a class="nav-link" href="../myPerformance/myPerformance.html"
+                >Performance</a
+              >
+            </li>
+
+            <li class="nav-item" id="nav-my-salary">
+              <a class="nav-link active" href="./leaveRequest.html"
+                >Leave Request</a
+              >
+            </li>
+
+            <li class="nav-item" id="nav-Approve-leave-request">
+              <a
+                class="nav-link"
+                href="../Approve Leave Requests/Approve Leave Requests.html"
+                >Approve Leave Requests</a
+              >
+            </li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-primary ms-auto" id="logout-btn">
+          Log Out
+        </button>
+      </div>
+    </nav>
+
+    <header>
+      <h1 class="text-center">Leave Management System</h1>
+    </header>
+    <main class="container d-flex justify-content-center">
+      <div class="row w-100">
+        <div class="col-md-6 col-sm-12">
+          <div class="card my-3">
+            <div class="card-header">Leave Requests</div>
+            <div class="card-body table-responsive">
+              <table class="table table-hover table-sm table-striped">
+                <thead>
+                  <tr>
+                    <th>Employee Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="leave-requests-table">
+                  <!-- Leave requests will be populated here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="card my-3">
+            <div class="card-header">Available Leave Balance:</div>
+            <div class="card-body"><span id="leave-balance"></span> Days</div>
+          </div>
+          <div class="card">
+            <div class="card-header">Submit Leave Request</div>
+            <div class="card-body">
+              <form id="leave-request-form">
+                <div class="form-group">
+                  <label for="start-date">Leave Start Date:</label>
+                  <input
+                    type="date"
+                    id="start-date"
+                    name="start_date"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="end-date">Leave End Date:</label>
+                  <input
+                    type="date"
+                    id="end-date"
+                    name="end_date"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="reason">Reason for Leave:</label>
+                  <textarea
+                    id="reason"
+                    name="reason"
+                    rows="5"
+                    class="form-control"
+                    required
+                  ></textarea>
+                </div>
+                <div class="form-group mt-3">
+                  <button type="submit" class="btn btn-primary">
+                    <span
+                      class="spinner-border spinner-border-sm d-none"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    Submit Leave Request
+                  </button>
+                </div>
+                <div id="request-status"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <!-- Bootstrap bundle (includes Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables Bootstrap 5 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <!-- for date -->
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="leaveRequest.js"></script>
+  </body>
+</html>

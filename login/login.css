@@ -1,0 +1,61 @@
+/* Set background color for the entire page */
+body {
+  background-color: #f8f9fa; /* Adjust the color as needed */
+}
+
+/* Custom CSS to center the form and make it narrower */
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Make the form narrower */
+.form-container {
+  width: 90%; /* Adjust the width as needed */
+  max-width: 500px; /* Maximum width */
+}
+
+/* Make form inputs and labels smaller */
+.form-control,
+.form-label {
+  font-size: 0.9rem; /* Adjust the font size as needed */
+}
+
+/* Margin for the "Forgot Password?" link */
+.forgot-password {
+  margin-top: 10px; /* Adjust the margin as needed */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 576px) {
+  .form-container {
+    width: 90%; /* Full width on smaller screens */
+  }
+
+  /* Adjust font size for smaller screens */
+  .form-control,
+  .form-label {
+    font-size: 0.8rem; /* Adjust the font size as needed */
+  }
+
+  /* Stack the "Sign In" button and "Forgot Password?" link */
+  .btn,
+  .forgot-password {
+    display: block;
+    width: 100%;
+    margin-top: 10px; /* Add spacing between the elements */
+  }
+}
+
+/* Media query to stack elements under each other in mobile screens */
+@media (max-width: 576px) {
+  .d-flex.flex-column {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.fa-spinner {
+  color: #0d6efd !important; /* Primary color from Bootstrap */
+}

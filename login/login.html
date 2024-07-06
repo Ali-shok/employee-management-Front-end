@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <h2 class="text-center mb-4">Sign In</h2>
+        <form id="sign-in-form">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control form-control-sm"
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control form-control-sm"
+              id="password"
+              placeholder="Password"
+            />
+          </div>
+          <div
+            class="d-flex justify-content-between align-items-center flex-column flex-sm-row"
+          >
+            <!-- Add spinner icon inside the button -->
+            <button type="submit" class="btn btn-primary" id="sign-in-btn">
+              <span
+                id="spinner"
+                class="spinner-border spinner-border-sm d-none"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              Sign In
+            </button>
+            <a href="#forgotPasswordModal" class="text-primary forgot-password">
+              Forgot Password?
+            </a>
+          </div>
+          <p class="text-center mt-3">
+            Don't have an account?
+            <a href="../signup/signup.html" class="text-success">Sign Up</a>
+          </p>
+        </form>
+      </div>
+
+      <!-- Add a modal for forgot password -->
+      <div
+        class="modal fade"
+        id="forgotPasswordModal"
+        tabindex="-1"
+        aria-labelledby="forgotPasswordModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="forgotPasswordModalLabel">
+                Forgot Password?
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="forgot-password-form">
+                <div class="mb-3">
+                  <label for="forgot-email" class="form-label"
+                    >Enter your email:</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="forgot-email"
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  <span
+                    class="spinner-border spinner-border-sm me-2 d-none"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Submit
+                </button>
+              </form>
+            </div>
+            <div
+              id="forgot-password-error"
+              class="alert alert-danger d-none"
+              role="alert"
+            >
+              <!-- Error message will be displayed here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="login.js"></script>
+  </body>
+</html>

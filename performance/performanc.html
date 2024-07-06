@@ -1,0 +1,297 @@
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Page title -->
+    <title>Performance</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    />
+    <!-- DataTables Bootstrap 5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css"
+    />
+    <!-- Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="performance.css" />
+  </head>
+  <body>
+    <!--NavBar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand brand-color">HR System</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <!-- Align to the right -->
+            <li class="nav-item" id="nav-salaries">
+              <a class="nav-link" href="../salary/salary.html">Salaries</a>
+            </li>
+            <li class="nav-item" id="nav-employees">
+              <a class="nav-link" href="../employee/employee.html">Employees</a>
+            </li>
+            <li class="nav-item" id="nav-performance">
+              <a class="nav-link active" href="./performanc.html"
+                >Performance</a
+              >
+            </li>
+            <li class="nav-item" id="nav-leave-request">
+              <a class="nav-link" href="../leaveRequest/leaveRequest.html"
+                >Leave Request</a
+              >
+            </li>
+            <li class="nav-item" id="nav-Approve-leave-request">
+              <a
+                class="nav-link"
+                href="../Approve Leave Requests/Approve Leave Requests.html"
+                >Approve Leave Request</a
+              >
+            </li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-primary ms-auto" id="logout-btn">
+          Log Out
+        </button>
+      </div>
+    </nav>
+
+    <!--Data Table-->
+
+    <div class="container mt-5">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="mb-0">Performance Reviews</h1>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#addPerformanceReviewModal"
+        >
+          Add Performance Review
+        </button>
+      </div>
+      <hr />
+      <div class="table-responsive">
+        <table
+          id="performance-review-table"
+          class="table table-sm table-striped table-bordered table-hover"
+        >
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Employee Name</th>
+              <th>Review Date</th>
+              <th>Performance Rating</th>
+              <th>Notes</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Performance review data will be populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Add Performance Review Modal -->
+    <div
+      class="modal fade"
+      id="addPerformanceReviewModal"
+      tabindex="-1"
+      aria-labelledby="addPerformanceReviewModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addPerformanceReviewModalLabel">
+              Add Performance Review
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Add Performance Review Form -->
+            <form id="addPerformanceReviewForm">
+              <!-- Form fields for adding performance review -->
+              <div class="mb-3">
+                <label for="employeeSelect" class="form-label">Employee</label>
+                <select
+                  class="form-select"
+                  id="employeeSelect"
+                  name="employee_id"
+                >
+                  <!-- Employee options will be populated dynamically -->
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="reviewDate" class="form-label">Review Date</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="reviewDate"
+                  name="review_date"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="performanceRating" class="form-label"
+                  >Performance Rating</label
+                >
+                <select
+                  class="form-select"
+                  id="performanceRating"
+                  name="performance_rating"
+                  required
+                >
+                  <option value="bad">Bad</option>
+                  <option value="good" selected>Good</option>
+                  <option value="excellent">Excellent</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea
+                  class="form-control"
+                  id="notes"
+                  name="notes"
+                  rows="3"
+                ></textarea>
+              </div>
+              <!-- Hidden input field to store employee ID -->
+              <button type="submit" class="btn btn-primary d-block w-100">
+                <span
+                  class="spinner-border spinner-border-sm position-absolute top-50 start-50 translate-middle d-none"
+                  role="status"
+                  aria-hidden="true"
+                ></span
+                >Add Review
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- edit Performance Review Modal -->
+    <div
+      class="modal fade"
+      id="editPerformanceReviewModal"
+      tabindex="-1"
+      aria-labelledby="editPerformanceReviewModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editPerformanceReviewModalLabel">
+              Edit Performance Review
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Edit Performance Review Form -->
+            <form id="editPerformanceReviewForm">
+              <!-- Form fields for editing performance review -->
+              <div class="mb-3">
+                <label for="editEmployeeName" class="form-label"
+                  >Employee Name</label
+                >
+                <select
+                  class="form-select"
+                  id="editEmployeeName"
+                  name="employee_id"
+                  required
+                >
+                  <!-- Options for employee names will be dynamically populated -->
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="editReviewDate" class="form-label"
+                  >Review Date</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="editReviewDate"
+                  name="review_date"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="editPerformanceRating" class="form-label"
+                  >Performance Rating</label
+                >
+                <select
+                  class="form-select"
+                  id="editPerformanceRating"
+                  name="performance_rating"
+                  required
+                >
+                  <option value="bad">Bad</option>
+                  <option value="good">Good</option>
+                  <option value="excellent">Excellent</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="editNotes" class="form-label">Notes</label>
+                <textarea
+                  class="form-control"
+                  id="editNotes"
+                  name="notes"
+                  rows="3"
+                ></textarea>
+              </div>
+              <!-- Hidden input field to store review ID -->
+              <input type="hidden" id="editReviewId" name="id" />
+              <button type="submit" class="btn btn-primary d-block w-100">
+                <span
+                  class="spinner-border spinner-border-sm me-2 d-none"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                Save Changes
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <!-- Bootstrap bundle (includes Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables Bootstrap 5 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <!-- for date -->
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="performance.js"></script>
+  </body>
+</html>

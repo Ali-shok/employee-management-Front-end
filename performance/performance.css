@@ -1,0 +1,30 @@
+/* Additional styling can be added here */
+body {
+  background-color: #f8f9fa;
+}
+.edit-btn,
+.delete-btn {
+  margin: 0 auto; /* Center icons horizontally */
+  cursor: pointer; /* Set cursor to pointer on hover */
+}
+label {
+  margin-left: 5px;
+}
+.navbar-nav .nav-item .nav-link.active {
+  color: gray !important;
+}
+.navbar {
+  background-color: #1e1d1b; /* Dark background color */
+}
+
+.navbar .navbar-brand,
+.navbar .navbar-nav .nav-link {
+  color: #f8f9fa; /* Light text color */
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  color: #cccccc; /* Light text color for hovered navbar links */
+}
+.brand-color {
+  color: rgb(65, 65, 141) !important;
+}
